@@ -1,10 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button, Container, Row } from "react-bootstrap";
 
-function App() {
+
+export default function App() {
   return (
-    <div></div>
+    <Container fluid>
+      <Row>aaaa</Row>
+    </Container>
   );
 }
-
-export default App;
