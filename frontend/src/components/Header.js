@@ -4,8 +4,10 @@ import { Button, Col, Row } from "react-bootstrap";
 export default function Header() {
     return (
 
-
-        <Row className="justify-content-between p-2">
+        <Row 
+            className="justify-content-between p-2"
+            style={{ backgroundColor: "black" }}
+        >
             <Col>
                 logo
             </Col>
