@@ -5,7 +5,7 @@ import FullCalendar from "@fullcalendar/react"
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import { formatDate } from '@fullcalendar/core';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Label from "../components/Label";
 import { useForm } from "react-hook-form";
 import FormInput from "../components/FormInput";
@@ -15,6 +15,7 @@ import { SelectPicker } from "rsuite";
 
 export default function Agenda() {
     const [abrirModalAgendamento, setAbrirModalAgendamento] = useState(false);
+
 
     const handleNovoAgendamento = () => {
         setAbrirModalAgendamento(true)
@@ -57,7 +58,7 @@ export default function Agenda() {
 
     const data = ['Eugenia', 'Bryan', 'Linda', 'Nancy', 'Lloyd', 'Alice', 'Julia', 'Albert'].map(
         item => ({ label: item, value: item })
-      );
+    );
 
     // página da agenda
     return (
@@ -136,7 +137,7 @@ export default function Agenda() {
     // modal do agendamento
     function ModalAgendamento() {
         const { register, formState, handleSubmit, setValue } = useForm()
-
+        const modalRef = useRef(null);
         return (
             <Modal
                 show={abrirModalAgendamento}
@@ -149,7 +150,7 @@ export default function Agenda() {
                         <Calendar className="me-1" /> Novo agendamento
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body ref={modalRef}>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                     >
@@ -173,13 +174,10 @@ export default function Agenda() {
                                 Serviço
                             </Label>
                             <SelectPicker
-                                data={data}
+                                data={[{ value: 'apple', label: 'Apple' }, { value: 'banana', label: 'Banana' }]} // Exemplo de dados
                                 placeholder="SELECIONE 1"
-                                className="is-invalid" // Adicione classes Bootstrap aqui
-                                {...register("servico", { required: "Campo obrigatório*" })}
-                                menuStyle={{ zIndex: 2000 }}
-                                searchable={true} // Ative a pesquisa
-                                autoFocus={false} // Desative o foco automático
+                                menuStyle={{ zIndex: 2000 }} // pra caixa de pesquisa aparecer certo
+                                container={modalRef.current}
                             />
                             {
                                 formState.errors.servico && (
