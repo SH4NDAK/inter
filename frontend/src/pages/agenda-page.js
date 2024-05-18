@@ -10,6 +10,7 @@ import Label from "../components/Label";
 import { useForm } from "react-hook-form";
 import FormInput from "../components/FormInput";
 import FormTextarea from "../components/FormTextarea";
+import { SelectPicker } from "rsuite";
 
 
 export default function Agenda() {
@@ -53,6 +54,10 @@ export default function Agenda() {
     const onSubmit = (data) => {
         console.log(data);
     }
+
+    const data = ['Eugenia', 'Bryan', 'Linda', 'Nancy', 'Lloyd', 'Alice', 'Julia', 'Albert'].map(
+        item => ({ label: item, value: item })
+      );
 
     // página da agenda
     return (
@@ -160,6 +165,27 @@ export default function Agenda() {
 
                                 />
                             </Col>
+                        </Row>
+                        <Row>
+                            <Label
+                                obrigatorio={true}
+                            >
+                                Serviço
+                            </Label>
+                            <SelectPicker
+                                data={data}
+                                placeholder="SELECIONE 1"
+                                className="is-invalid" // Adicione classes Bootstrap aqui
+                                {...register("servico", { required: "Campo obrigatório*" })}
+                                menuStyle={{ zIndex: 2000 }}
+                                searchable={true} // Ative a pesquisa
+                                autoFocus={false} // Desative o foco automático
+                            />
+                            {
+                                formState.errors.servico && (
+                                    <span className="text-danger">{formState.errors.servico.message}</span>
+                                )
+                            }
                         </Row>
                         <Row>
                             <Col md={6}>

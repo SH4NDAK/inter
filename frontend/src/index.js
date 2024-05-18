@@ -4,6 +4,7 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Agenda from './pages/agenda-page';
+import 'rsuite/dist/rsuite.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
