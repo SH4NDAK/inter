@@ -1,24 +1,27 @@
-import { Bell, Calendar, CloudUpload, Plus, User, X } from "lucide-react";
-import { Button, Col, Container, FormControl, InputGroup, Modal, Row } from "react-bootstrap";
-import Header from "../components/Header";
-import FullCalendar from "@fullcalendar/react"
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import { formatDate } from '@fullcalendar/core';
-import { useRef, useState } from "react";
-import Label from "../components/Label";
+import FullCalendar from "@fullcalendar/react";
+import timeGridPlugin from '@fullcalendar/timegrid';
+import axios from 'axios';
+import { Calendar, CloudUpload, Plus, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import FormInput from "../components/FormInput";
-import FormTextarea from "../components/FormTextarea";
-import { SelectPicker } from "rsuite";
 import FormSelectpicker from "../components/FormSelectpicker";
+import FormTextarea from "../components/FormTextarea";
+import Header from "../components/Header";
 
 
 export default function Agenda() {
     const [abrirModalAgendamento, setAbrirModalAgendamento] = useState(false);
 
+    const handleNovoAgendamento = async () => {
+        try {
+            const response = await axios.get("http://localhost:5113/agendamento");
+            console.log(response);
+        } catch (e) {
+            
+        }
 
-    const handleNovoAgendamento = () => {
         setAbrirModalAgendamento(true)
     }
 
