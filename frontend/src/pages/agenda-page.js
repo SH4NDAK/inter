@@ -104,13 +104,12 @@ export default function Agenda() {
                         weekends={true}
                         locale={"pt-BR"}
                         headerToolbar={{
-                            left: 'prev, next today',
+                            left: 'prev next today',
                             center: 'title',
-                            right: 'timeGridWeek, timeGridDay',
+                            right: 'timeGridWeek timeGridDay',
                         }}
                         allDaySlot={false}
                         buttonText={{
-                            today: 'Hoje',
                             week: 'Semana',
                             day: 'Dia'
                         }}
@@ -146,8 +145,9 @@ export default function Agenda() {
                     backdrop="static"
                     keyboard={false}
                     centered
+                    
                 >
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                         <Modal.Title>
                             <Calendar className="me-1" /> Novo agendamento
                         </Modal.Title>
