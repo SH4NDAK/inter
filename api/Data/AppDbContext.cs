@@ -9,10 +9,5 @@ namespace jwtRegisterLogin.Data
         {           
         }
 
-        public DbSet<UsuarioModel> Usuario { get; set; }
-
-        public DbSet<ServicoModel> Servico { get ; set; }
-
-        public DbSet<AgendaModel> Agenda { get; set; }
     }
 }

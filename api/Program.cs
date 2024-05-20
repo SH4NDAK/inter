@@ -1,3 +1,6 @@
+using jwtRegisterLogin.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // adicionando middleware pro CORS
